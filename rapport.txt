@@ -1,0 +1,16 @@
+L’attaque par le milieu que nous avons décider de mettre en place dans ce projet repose sur la comparaison de deux listes générées à partir du chiffrement et du déchiffrement d’un message connu à l’aide de clés différentes.
+
+Pour trouver les éléments communs entre les deux listes, on compare les premiers éléments de chaque liste et on avance le ‘pointeur’ de la liste ayant le plus petit élément. Si les deux éléments sont égaux, on a une collision et on peut alors utiliser les clés associées à ces éléments pour vérifier si elles sont la bonne clé.
+
+Nous avons implémenter une technique de calcul en parallèle permettant à cette attaque de trouver plusieurs milliers d’éléments communs entre les deux listes, et donc de déduire la clé secrète utilisée pour le chiffrement.
+Notre méthode de recherche des éléments communs permet aussi de réduire le temps de recherche de la clé, par rapport à une attaque de brute force. Contrairement à l’attaque brute force où l’on essaye toutes les clés possible, notre méthode de recherche réduit la ‘zone’ de recherche des clés, ce qui rend notre méthode plus rapide et efficace que le brute force.
+
+
+Exemple:
+sur 14 bits recherche terminée avec 5 collision
+[('000fa4', '00067c'), ('002c05', '00083a'),
+('002c25', '00083a'), ('003c05', '00083a'),
+('003c25', '00083a')]
+
+sur 12 bits recherche terminée avec 1 collision
+[('000fa4', '00067c')]
